@@ -28,7 +28,7 @@ public class Produto {
 	private Double preco;
 	
 	@NotBlank(message = "Campo de preenchimento obrigatório.")
-	@Size(min = 5, max = 255, message = "No mínimo 5 e no máximo 255 caracteres")
+	@Size(min = 2, max = 255, message = "No mínimo 2 e no máximo 255 caracteres")
 	private String descricao;
 	
 	@Positive(message = "Campo não pode ter valor negativo.")
