@@ -13,7 +13,7 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "tb_produto")
+@Table(name = "tb_produtos")
 public class Produto {
 	
 	@Id
@@ -33,6 +33,11 @@ public class Produto {
 	
 	@Positive(message = "Campo não pode ter valor negativo.")
 	private Integer quantidade;
+	
+	//campo que irá interligar as duas tabelas: produto e usuario
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
+	private Usuario usuario;
 	
 	//campo que irá interligar as duas tabelas: produto e categoria
 	@ManyToOne
@@ -79,6 +84,14 @@ public class Produto {
 
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public Categoria getCategoria() {

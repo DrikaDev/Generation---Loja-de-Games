@@ -31,7 +31,7 @@ public class Categoria {
 	@Size(min = 10, max = 255, message = "Campo deve conter no mínimo 10 no máximo 255 caracteres.")
 	private String descricao;
 	
-	//campo que irá interligar as duas tabelas: produto e categoria
+	//campo que irá interligar as duas tabelas: categoria e produto
 	@OneToMany(fetch = FetchType.LAZY ,mappedBy = "categoria", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("categoria")
 	private List<Produto> produto;
