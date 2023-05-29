@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,8 +32,8 @@ public class Categoria {
 	private String descricao;
 	
 	//campo que irá interligar as duas tabelas: produto e categoria
-	@OneToMany(mappedBy = "categoria", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties
+	@OneToMany(fetch = FetchType.LAZY ,mappedBy = "categoria", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("categoria")
 	private List<Produto> produto;
 
 	public Long getId() {
